@@ -1,0 +1,1 @@
+  json.partial! @speaker, partial: 'speaker', as: :speaker
