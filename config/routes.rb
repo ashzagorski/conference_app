@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     get '/speakers/:id' => 'speakers#show_speakers'
     patch '/speakers/:id' => 'speakers#update_speakers'
     delete '/speakers/:id' => 'speakers#destroy_speakers'
-    get '/meeting' => 'speakers#index'
-    post '/meeting' => 'speakers#create'
-    get '/meeting/:id' => 'speakers#show'
-    patch '/meeting/:id' => 'speakers#update'
-    delete '/meeting/:id' => 'speakers#destroy'
+    get '/meetings' => 'meetings#index'
+    post '/meetings' => 'meetings#create'
+    get '/meetings/:id' => 'meetings#show'
+    patch '/meetings/:id' => 'meetings#update'
+    delete '/meetings/:id' => 'meetings#destroy'
   end
 end
