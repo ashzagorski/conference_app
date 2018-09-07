@@ -2,6 +2,11 @@ class Api::MeetingsController < ApplicationController
   def index
     @meetings = Meeting.all
     render 'index.json.jbuilder'
+
+    search_term = params[:search]
+    if search_term
+      @meeints = @meetings.where(remote: true)
+    end
   end 
 
   def create

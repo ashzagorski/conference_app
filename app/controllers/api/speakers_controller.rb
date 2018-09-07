@@ -3,6 +3,11 @@ class Api::SpeakersController < ApplicationController
   def index_speakers
     @speakers = Speaker.all
     render 'speaker_index.json.jbuilder'
+
+    search_term = params[:search]
+    if search_term
+      @speakers = @speakers.order[age: :desc]
+    end 
   end 
 
   def create_speakers
