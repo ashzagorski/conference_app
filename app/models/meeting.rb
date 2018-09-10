@@ -1,4 +1,6 @@
 class Meeting < ApplicationRecord
+  belongs_to :speaker
+  
   validates :title, presence: true
   validates :title, uniqueness: true
   validates :agenda, presence: true
@@ -6,4 +8,6 @@ class Meeting < ApplicationRecord
   validates :agenda, length: {maximum: 100}
   validates :time, presence: true
   validates :time, uniqueness: true
+
+
 end
