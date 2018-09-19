@@ -1,12 +1,27 @@
 class Api::MeetingsController < ApplicationController
-  def index
-    @meetings = Meeting.all
-    render 'index.json.jbuilder'
+  before_action :authenticate_admin, except: [:index, :show]
 
+  def index
     search_term = params[:search]
+    sort_attribute = params[:sort]
+    sort_order = params[:sort_order]
+
+    @meetings = Meeting.all
+
+   
+
+  
     if search_term
-      @meeints = @meetings.where(remote: true)
+      @meetings = @meetings.where("name iLIKE ?", "%#{search_term}")
     end
+
+     if sort_order && sort_attribute
+      @meetings = @meetings.order(sort_attribute => sort_order)
+    elsif sort_attribute
+      @meetings = @meetings.order(sort_attribute)
+    end 
+
+     render 'index.json.jbuilder'
   end 
 
   def create

@@ -10,5 +10,10 @@ Rails.application.routes.draw do
     get '/meetings/:id' => 'meetings#show'
     patch '/meetings/:id' => 'meetings#update'
     delete '/meetings/:id' => 'meetings#destroy'
+
+    post "/users" => "users#create"
+
+    post "/sessions" => "sessions#create"
+
   end
 end
